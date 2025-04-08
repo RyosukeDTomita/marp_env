@@ -1,0 +1,26 @@
+{
+  "name": "Marp",
+  "workspaceFolder": "/app",
+  "build": {
+    "target": "devcontainers",
+    "dockerfile": "Dockerfile",
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
+  "overrideCommand": true,
+  "features": {
+    "ghcr.io/guiyomh/features/vim:0": {},
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "formulahendry.auto-rename-tag",
+        "DavidAnson.vscode-markdownlint",
+        "oderwat.indent-rainbow",
+        "ionutvmi.path-autocomplete",
+        "mushan.vscode-paste-image",
+        "streetsidesoftware.code-spell-checker",
+        "marp-team.marp-vscode",
+      ]
+    }
+  }
+}
