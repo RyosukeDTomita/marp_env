@@ -13,7 +13,7 @@ style: |
   }
 ---
 
-# ネット上のたくさんの誰かのおかげで<br>エンジニアになれた話と<br>Qiitaを書くようになって得た知見の共有
+# ネット上のたくさんの誰かのおかげで<br>エンジニアになれた話と<br>Qiitaを書くようになって得た知見の共有<br>2025/04/14<br>Qiita Bash<br>@sigma_devsecops
 
 ---
 
@@ -21,7 +21,7 @@ style: |
 
 ![bg right:50%](./mainicon.png)
 
-- 名前: 富田 涼介, Tommy
+- 名前: sigma
 - 職業: セキュリティエンジニア
   - \#春から四年目
   - セキュリティ診断
@@ -66,6 +66,7 @@ style: |
 - [新しいLinuxの教科書](https://www.sbcr.jp/product/4815624316/)(本)
 - [誰でもできるようになる，やさしいVim入門](https://qiita.com/5t111111/items/d28e50f70f81d3d36c30) @5t111111
 - [Vim 設定ガイド](https://qiita.com/marrontan619/items/541a1374e1ac672977e6) @marrontan619
+- [dotfilesの育て方](https://qiita.com/reireias/items/b33b5c824a56dc89e1f7) @reireias
 
 CLIを使うのが人よりも得意になったように思う
 
@@ -89,9 +90,21 @@ CLIを使うのが人よりも得意になったように思う
 # Qiitaを書き始めた
 
 2024年4月からQiitaを書き始めた
+いろいろ模索中
 
 ![bg right:50%](./qiita_profile.png)
 ![height:380](./qr_qiita.png)
+
+---
+
+# なぜQiitaを書こうと思ったのか
+
+- ローカルのメモよりも強制力が働く
+  - ちゃんと調べる
+  - 早く成果を出せる
+- 人に伝える力がつく
+  - AIとの差別化を考えたい
+- 勉強会で友達を作るなら有名なほうが良いはず
 
 ---
 

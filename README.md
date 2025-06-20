@@ -39,3 +39,14 @@ WSL2でMarpを使った時にブラウザが入っておらず，Exportがうま
   - コマンドパレットから，Export Slide dockを使うとスライドになる。
 
 ---
+
+## Styleを変更する
+
+- [cunhapaulo/marpstyle: Repository for Marp Themes created with beauty and simplicity in mind.](https://github.com/cunhapaulo/marpstyle)github.ioで公開してくださっているのでsettings.jsonにurlを入れるだけで使える。
+
+    ```md
+    ---
+    marp: true
+    style
+    ---
+    ```

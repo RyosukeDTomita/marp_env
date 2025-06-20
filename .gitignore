@@ -136,5 +136,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Dev Container
-.devcontainer/cache
+# marpstyle
+marpstyle
