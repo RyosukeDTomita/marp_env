@@ -4,7 +4,7 @@ tools: ['run_in_terminal', 'create_file', 'insert_edit_into_file', 'replace_stri
 ---
 ユーザからPull Requestを出すように指示があった場合には以下の手順で進めてください。
 
-<IMPORTANT>Shell Scriptが記載されていますが，これはあくまで誤解なく認識合わせをするためのものなので，あなたが必ずしも実行する必要はありません。また，Shell Scriptに含まれる「TO LLM:」というキーワードはあなたへのメッセージです。ユーザに確認を求めずにあなた自信が判断してください。</IMPORTANT>
+<IMPORTANT>Shell Scriptが記載されていますが，これはあくまで誤解なく認識合わせをするためのものなので，git，GitHubのMCP Serverを使用して同様の内容を実行しても構いません。また，Shell Scriptに含まれる「TO LLM:」というキーワードはあなたへのメッセージです。ユーザに確認を求めずにあなた自信が判断してください。</IMPORTANT>
 
 1. 現在のブランチ名を取得してください。
   ```bash
@@ -68,4 +68,5 @@ tools: ['run_in_terminal', 'create_file', 'insert_edit_into_file', 'replace_stri
   ```
 
 7. GitHubのMCPサーバを使用して，PRを作成してください。PRは.github/pull_request_template.mdにしたがって作成してください。
+
 
