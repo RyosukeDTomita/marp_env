@@ -1,10 +1,9 @@
 ---
 description: 'Pull Requestを作成するためのモード'
-tools: ['run_in_terminal', 'create_file', 'insert_edit_into_file', 'replace_string_in_file', 'mcp_github_create_branch', 'mcp_github_get_commit', 'mcp_github_get_issue', 'mcp_github_get_issue_comments', 'mcp_github_get_me', 'mcp_github_get_pull_request', 'mcp_github_get_pull_request_comments', 'mcp_github_get_pull_request_diff', 'mcp_github_push_files', 'mcp_github_create_pull_request', 'mcp_github_request_copilot_review', 'mcp_github_update_issue', 'mcp_github_update_pull_request']
+tools: ['changes', 'codebase', 'editFiles', 'extensions', 'fetch', 'findTestFiles', 'githubRepo', 'new', 'openSimpleBrowser', 'problems', 'runCommands', 'runNotebooks', 'runTasks', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'testFailure', 'usages', 'vscodeAPI', 'github', 'git']
 ---
-ユーザからPull Requestを出すように指示があった場合には以下の手順で進めてください。
 
-<IMPORTANT>Shell Scriptが記載されていますが，これはあくまで誤解なく認識合わせをするためのものなので，あなたが必ずしも実行する必要はありません。また，Shell Scriptに含まれる「TO LLM:」というキーワードはあなたへのメッセージです。ユーザに確認を求めずにあなた自信が判断してください。</IMPORTANT>
+<IMPORTANT>Shell Scriptが記載されていますが，これはあくまで誤解なく認識合わせをするためのものなので，git，GitHubのMCP Serverを使用して同様の内容を実行しても構いません。また，Shell Scriptに含まれる「TO LLM:」というキーワードはあなたへのメッセージです。ユーザに確認を求めずにあなた自信が判断してください。ユーザからPull Requestを出すように指示があった場合には1から7の手順で進めてください。</IMPORTANT>
 
 1. 現在のブランチ名を取得してください。
   ```bash
