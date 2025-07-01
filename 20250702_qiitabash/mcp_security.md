@@ -6,6 +6,10 @@ style: |
   section {
     font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
   }
+  /* コードブロック内の日本語フォント設定 */
+  section pre code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Noto Sans JP', monospace;
+  }
 
 paginate: true
 footer: Qiita Bash 2025/07/02
@@ -76,7 +80,7 @@ JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つで、JSON形式�
 {
   "jsonrpc": "2.0",
   "method": "profile",
-  "params": ["富田涼介"],
+  "params": ["Ryosuke Tomita"],
   "id": 1
 }
 
@@ -88,17 +92,16 @@ JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つで、JSON形式�
 
 - `jsonrpc`: 2.0固定
 - `result`: 結果
-- `error`: 正常処理の場合には含まれない
 - `id`: リクエストと同じ値を使う。
 
 ```json
 {
   "jsonrpc": "2.0",
   "result": {
-    "年齢": 27,
-    "所属": "NRI→NRIセキュアに出向(2022/04~)",
-    "業務内容": "認証基盤のSI開発/保守，脆弱性診断，シフトレフト活動",
-  }
+    "age": 27,
+    "affiliation": "NRI→NRIセキュアに出向(2022/04~)",
+    "job_description": "認証基盤のSI開発/保守，脆弱性診断，シフトレフト活動"
+  },
   "id": 1
 }
 ```
