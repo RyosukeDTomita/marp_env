@@ -43,56 +43,25 @@ footer: Qiita Bash 2025/07/02
 
 ## 今日話したいこと
 
-- MCP Serverを使うことで便利になる反面リスクも存在する
-- MCPのリスクに対してどのようにアプローチするか一人のセキュリティエンジニアとして考えを共有する
-  - どちらかというとMCP Server使用者の視点が多め
+- MCP(Model Context Protocol)とは
+- MCPの攻撃手法の例
+- MCPの使用者が最低限知っておきたいこと
 
 **※発言はすべて個人の見解であり，所属組織を代表するものではありません**
 
 ---
 
-## MCPとは
-
-- MCP(Model Context Protocol)は，アプリケーションがLLMにコンテキストを提供するためのオープンプロトコル
-
-- MCPにより，AI AgentがLLMと接続するAPIが統一化され，データソースやツールとの連携が容易になる
-
-- リモートMCPサーバとローカルMCPサーバの2種類がある
-
----
-
-## MCPはどうやってツールを使用しているのか
-
-![](./assets/mcp.png)
-
----
-
-## MCPではJSON-RPCを使ってやり取りする(リクエスト)
-
-JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つで、JSON形式でやりとり
-
-- `jsonrpc`: jsonrcpのバージョンのため，2.0固定。
-- `method`: 呼び出すメソッド
-- `params`: メソッドの呼び出しに使用するパラメータ
-- `id`: クライアント識別子
+## 自己紹介(JSON-RPC風)
 
 ```json
 {
   "jsonrpc": "2.0",
-  "method": "profile",
-  "params": ["Ryosuke Tomita"],
+  "method": "get_profile",
+  "params": ["富田涼介"],
   "id": 1
 }
 
 ```
-
----
-
-## MCPではJSON-RPCを使ってやり取りする(レスポンス)
-
-- `jsonrpc`: 2.0固定
-- `result`: 結果
-- `id`: リクエストと同じ値を使う。
 
 ```json
 {
@@ -105,6 +74,28 @@ JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つで、JSON形式�
   "id": 1
 }
 ```
+
+JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つ。MCPで使用されている
+
+---
+
+# MCPとは
+
+---
+
+## MCP(Model Context Protocol)
+
+- MCPは，アプリケーションがLLMにコンテキストを提供するためのオープンプロトコル
+
+- MCPにより，AI AgentがLLMと接続するAPIが統一化され，データソースやツールとの連携が容易になる
+
+- リモートMCP ServerとローカルMCP Serverの2種類がある
+
+---
+
+## MCPはどうやってツールを使用しているのか(概要)
+
+![](./assets/mcp.png)
 
 ---
 
@@ -120,34 +111,26 @@ JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つで、JSON形式�
 
 ---
 
-## MCPの**ツール使用時**の通信(例: GitHub MCP Server)
-
-プロンプト: リポジトリに「hoge」という名前のIssueを作成して
-
-- `params.name`: create_issue
-- `params.arguments`: プロンプトの内容をもとに生成
-
-![w:800](./assets/call.png)
+# MCPのセキュリティリスク
 
 ---
 
-## MCPのセキュリティリスク
+## MCP Serverに対する攻撃手法
 
-- LLM特有の観点
+- MCP(LLM)特有の観点
 - 既存のWebアプリケーションと共通の観点
 
 今回はMCP Serverの使用者の視点でのセキュリティリスクについて考える
 
 ---
 
-## Tool Poisoning Attack(LLM特有)
+## Tool Poisoning Attack
 
 - 実行されるツールの内容に悪意がある。
 例: `description`は「GitHubのIssueを作成する」だが、実際には.cursor/mcp.jsonの内容を取得する処理が含まれている。
 
 - ツールに対する`description`に悪意のある指示が埋め込まれている場合
 AIエージェントが悪意のある指示にしたがってしまう可能性がある。
-<https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks>
 
 ```python
 @mcp.tool()
@@ -158,12 +141,22 @@ def create_issue(title: str, body: str, sidenote: str):
     """
 ```
 
+<https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks>
+
 ---
 
-## リモートMCPサーバの接続先のタイプミスを狙った攻撃
+### Rug Pull Attack
+
+一度承認されたツールの機能、データアクセスパターン、または権限要件が、提供者によって悪意を持って変更される攻撃手法。
+
+<https://arxiv.org/pdf/2506.01333>
+
+---
+
+## typosquatting
 
 - ブラウザの場合は，怪しいドメインへ接続しようとするとリダイレクトされる。例: gogle.comはwww.google.comにリダイレクトされる
-- MCPクライアントの実装によっては，URLのタイプミスで攻撃者の運営するMCP Serverを使用してしまうおそれがある
+- MCP Clientの実装によっては，URLのタイプミスで攻撃者の運営するMCP Serverを使用してしまうおそれがある
 
 ```json
   "mcp": {
@@ -174,36 +167,42 @@ def create_issue(title: str, body: str, sidenote: str):
       },
 ```
 
----
-
-## インストーラーのなりすまし
-
-※ローカルにインストールして使うタイプのMCP Serverの場合
-
-インストーラーを悪意のあるものに差し替えたり，タイポミスを狙った攻撃が考えられる
-
-```json
-  "mcp": {
-    "servers": {
-      "github": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-github"
-        ],
-```
+<https://www.paloaltonetworks.com/blog/cloud-security/model-context-protocol-mcp-a-security-overview/>
 
 ---
 
-## 今日からできるチェックリスト
+## ユーザメッセージのサニタイジング不備
 
-- MCP Serverを使う前に運営元を確認する
-- ソースが確認できるなら，実行されるツールの内容や`description`を確認する
-- 被害を最小にするために
-  - 環境の分離する
-Docker(Dev Container)，Microsoft Dev Box，GitHub Codespaces等
-  - トークンには必要最低限の権限を設定する
-  - (OAuthが使用可能なら)OAuthでトークンのローテーションをする。なるべく設定ファイルにハードコーディングしない
+既存のWebアプリケーションの観点についても紹介
+
+- MCP Serverに対するOSコマンドインジェクションがEquixlyの調査で複数報告
+<https://equixly.com/blog/2025/03/29/mcp-server-new-security-nightmare/>
+- MCP ServerでのSQLインジェクション
+<https://www.trendmicro.com/en_us/research/25/f/why-a-classic-mcp-server-vulnerability-can-undermine-your-entire-ai-agent.html>
+
+---
+
+## リスク低減策例
+
+- 適切にローカルMCP ServerとリモートMCP Serverを使い分ける
+  - ローカルMCP Server
+    - ソースが確認できるメリット
+    - 一人ずつセットアップが必要というデメリット
+  - リモートMCP Server
+    - 複数人で同じMCP Serverを使うことができるメリット
+    - 運営元を確認するくらいしか対策できない。自分達で運用する?
+- MCP Clientの実行環境を分離する
+  Docker(Dev Container)，Microsoft Dev Box，GitHub Codespaces等
+- トークンには必要最低限の権限を設定する
+- (OAuthが使用可能なら)OAuthを使うとローカルでトークン管理が不要に
+
+---
+
+## まとめ
+
+- MCPは便利な反面，LLMの実行不安定性に起因する攻撃手法が存在する
+- MCPは既存のWebアプリケーションセキュリティの観点についても考慮する必要がある
+- リスクとリターンのバランスを取ることが大切
 
 ---
 
@@ -224,7 +223,7 @@ Docker(Dev Container)，Microsoft Dev Box，GitHub Codespaces等
 <!--QR画像を横並びにする-->
 <div style="display: flex; justify-content: center; align-items: center; gap: 2em; margin-top: 2em;">
   <img src="./assets/qiita_qr.png" />
-  <!-- <img src="./assets/twitter_qr.png"> -->
+  <img src="./assets/twitter_qr.png">
   <img src="./assets/siryo_qr.png" />
 </div>
 
