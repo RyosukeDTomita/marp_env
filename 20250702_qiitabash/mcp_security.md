@@ -44,8 +44,8 @@ footer: Qiita Bash 2025/07/02
 ## 今日話したいこと
 
 - MCP(Model Context Protocol)とは
-- MCPの攻撃手法の例
-- MCPの使用者が最低限知っておきたいこと
+- MCPの攻撃手法紹介
+- リスク低減作例
 
 **※発言はすべて個人の見解であり，所属組織を代表するものではありません**
 
@@ -120,14 +120,13 @@ JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つ。MCPで使用さ
 - MCP(LLM)特有の観点
 - 既存のWebアプリケーションと共通の観点
 
-今回はMCP Serverの使用者の視点でのセキュリティリスクについて考える
-
 ---
 
 ## Tool Poisoning Attack
 
 - 実行されるツールの内容に悪意がある。
-例: `description`は「GitHubのIssueを作成する」だが、実際には.cursor/mcp.jsonの内容を取得する処理が含まれている。
+例: `description`は「GitHubのIssueを作成する」だが、実際には悪意のある処理が含まれている。
+SASTで検知しやすい
 
 - ツールに対する`description`に悪意のある指示が埋め込まれている場合
 AIエージェントが悪意のある指示にしたがってしまう可能性がある。
@@ -147,7 +146,8 @@ def create_issue(title: str, body: str, sidenote: str):
 
 ### Rug Pull Attack
 
-一度承認されたツールの機能、データアクセスパターン、または権限要件が、提供者によって悪意を持って変更される攻撃手法。
+一度承認されたツール等が，提供者によって悪意を持って変更される攻撃手法。
+ユーザ側は変更に気づかない可能性がある。
 
 <https://arxiv.org/pdf/2506.01333>
 
@@ -201,7 +201,7 @@ def create_issue(title: str, body: str, sidenote: str):
 ## まとめ
 
 - MCPは便利な反面，LLMの実行不安定性に起因する攻撃手法が存在する
-- MCPは既存のWebアプリケーションセキュリティの観点についても考慮する必要がある
+- MCPのセキュリティの観点として通常のWebアプリケーションと同じような観点についても考慮する必要がある
 - リスクとリターンのバランスを取ることが大切
 
 ---
