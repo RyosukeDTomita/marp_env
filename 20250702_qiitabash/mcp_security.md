@@ -44,8 +44,8 @@ footer: Qiita Bash 2025/07/02
 ## 今日話したいこと
 
 - MCP(Model Context Protocol)とは
-- MCPの攻撃手法紹介
-- リスク低減作例
+- MCPに対する攻撃手法紹介
+- リスク低減策例
 
 **※発言はすべて個人の見解であり，所属組織を代表するものではありません**
 
@@ -111,7 +111,7 @@ JSON-RPC: Remote Procedure Call (RPC) プロトコルの一つ。MCPで使用さ
 
 ---
 
-# MCPのセキュリティリスク
+# MCPに対する攻撃手法
 
 ---
 
@@ -223,7 +223,7 @@ def create_issue(title: str, body: str, sidenote: str):
 <!--QR画像を横並びにする-->
 <div style="display: flex; justify-content: center; align-items: center; gap: 2em; margin-top: 2em;">
   <img src="./assets/qiita_qr.png" />
-  <img src="./assets/twitter_qr.png">
+  <!-- <img src="./assets/twitter_qr.png"> -->
   <img src="./assets/siryo_qr.png" />
 </div>
 
