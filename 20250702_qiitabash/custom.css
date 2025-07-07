@@ -1,6 +1,7 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
-@import "gaia";
+/**
+Marpのデフォルトフォントはmd側で指定したほうがいい。css側だとうまくいかず，文字化けする。
+**/
 
 /* フォント全体 - 日本語対応フォント */
 section {
@@ -19,7 +20,6 @@ section h1 {
   font-weight: bold;
   font-size: 1.8em;
   text-align: center;
-  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
 }
 /* 小見出し(H2) - 左上固定位置 */
 section h2 {
@@ -32,7 +32,6 @@ section h2 {
   top: 1em;
   left: 1em;
   z-index: 10;
-  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
 }
 /* 箇条書き */
 section ul {
@@ -63,5 +62,5 @@ section::after {
   color: #ffffff !important; /* 白色 */
   font-weight: bold;
   font-size: 0.8em;
-  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
 }
+
