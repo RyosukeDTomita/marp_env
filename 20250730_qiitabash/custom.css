@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/**
+Marpのデフォルトフォントはmd側で指定したほうがいい。css側だとうまくいかず，文字化けする。
+**/
+
+/* フォント全体 - 日本語対応フォント */
+section {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
+  font-size: 24px;
+  line-height: 1.6;
+  padding: 2em;
+  background: white;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+}
+/* タイトル(H1) - 中央配置 */
+section h1 {
+  color: #1a237e; /* 濃い青 */
+  font-weight: bold;
+  font-size: 1.8em;
+  text-align: center;
+}
+/* 小見出し(H2) - 左上固定位置 */
+section h2 {
+  color: #1a237e; /* 濃い青 */
+  font-weight: bold;
+  font-size: 1.4em;
+  text-align: left;
+  margin: 0;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  z-index: 10;
+}
+/* 箇条書き */
+section ul {
+  margin-top: 1em;
+  padding-left: 1.2em;
+}
+section li {
+  margin-bottom: 0.6em;
+}
+footer {
+  font-size: 0.8em; /* ページ番号と同じサイズに調整 */
+  color: #ffffff !important; /* 純白色を強制適用 */
+  font-weight: bold; /* 太字で見やすく */
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  right: 0;
+  width: 100%;
+  background-color: #1e3a8a; /* 紺色背景 */
+  text-align: center;
+  margin: 0;
+  border: none; /* 境界線を削除 */
+  box-shadow: none; /* 影を削除 */
+}
+
+/* ページ番号のスタイル */
+section::after {
+  color: #ffffff !important; /* 白色 */
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
