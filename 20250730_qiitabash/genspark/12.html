@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>まとめ</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .content-area {
+            max-width: 1100px;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .summary-card {
+            border-left: 4px solid #4caf50;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+        .summary-card:hover {
+            transform: translateY(-3px);
+        }
+        .summary-icon {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">まとめ</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="grid grid-cols-1 gap-8 mt-10">
+<div class="summary-card p-6 rounded-lg">
+<div class="flex items-start">
+<div class="summary-icon mr-6 text-3xl">
+<i class="fas fa-expand-arrows-alt"></i>
+</div>
+<div>
+<h3 class="font-bold text-xl mb-2">エンジニアとしての視野が広がる</h3>
+<p class="text-lg">TDD導入が技術的スキルだけでなく、設計思考や品質への意識を高めました</p>
+</div>
+</div>
+</div>
+<div class="summary-card p-6 rounded-lg">
+<div class="flex items-start">
+<div class="summary-icon mr-6 text-3xl">
+<i class="fas fa-robot"></i>
+</div>
+<div>
+<h3 class="font-bold text-xl mb-2">AIにもガードレールが必要</h3>
+<p class="text-lg">AIを活用する場合でも、テストという形でガードレールを設けることの重要性</p>
+</div>
+</div>
+</div>
+<div class="summary-card p-6 rounded-lg">
+<div class="flex items-start">
+<div class="summary-icon mr-6 text-3xl">
+<i class="fas fa-flask"></i>
+</div>
+<div>
+<h3 class="font-bold text-xl mb-2">模索と実験の継続</h3>
+<p class="text-lg">TDDが唯一の解ではなく、様々なアプローチを試しながら最適な方法を見つけていく姿勢</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+</body>
+</html>

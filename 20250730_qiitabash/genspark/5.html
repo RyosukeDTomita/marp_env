@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TDD導入のきっかけ</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .content-area {
+            max-width: 1100px;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .motivation-point {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+        }
+        .motivation-icon {
+            margin-right: 16px;
+            color: #4caf50;
+        }
+        .subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #4caf50;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">TDD導入のきっかけ</h1>
+</div>
+<div class="content-area mx-auto">
+<h2 class="subtitle text-center">「おらこんな環境いやだ〜TDDするだ〜」</h2>
+<div class="text-2xl font-semibold mb-6">自動テストが欲しい</div>
+<div class="motivation-point text-xl">
+<div class="motivation-icon">
+<i class="fas fa-robot fa-2x"></i>
+</div>
+<div>
+            手動テストから解放されたい
+        </div>
+</div>
+<div class="motivation-point text-xl">
+<div class="motivation-icon">
+<i class="fas fa-hourglass-half fa-2x"></i>
+</div>
+<div>
+            デプロイしてから動作確認をするのは時間がかかる
+        </div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+</body>
+</html>

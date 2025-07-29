@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TDDで(自分の)開発がどう変わったか</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+        margin: 20px auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        page-break-inside: avoid;
+    }
+    .title {
+        font-weight: 700;
+        color: #222;
+    }
+    .subtitle {
+        color: #333;
+    }
+    .speaker-name {
+        color: #555;
+    }
+    .accent-bar {
+        background-color: #4caf50;
+        height: 8px;
+        width: 120px;
+        margin: 12px auto;
+    }
+    .qiita-badge {
+        background-color: #4caf50;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    .owl-container {
+        margin-top: 20px;
+    }
+    .content-area {
+        max-width: 1100px;
+    }
+    .slide-header {
+        border-left: 6px solid #4caf50;
+        padding-left: 16px;
+    }
+    .photo-container img {
+        border: 1px solid #eee;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .profile-item {
+        margin-bottom: 16px;
+        display: flex;
+    }
+    .profile-label {
+        font-weight: 600;
+        min-width: 140px;
+    }
+    .agenda-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .agenda-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        font-size: 1.5rem;
+    }
+    .agenda-bullet {
+        background-color: #4caf50;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        margin-right: 20px;
+        flex-shrink: 0;
+    }
+    .process-step {
+        padding-left: 16px;
+        margin-bottom: 24px;
+        position: relative;
+    }
+    .step-number {
+        font-weight: 700;
+        color: #4caf50;
+        margin-right: 8px;
+    }
+    .step-arrow {
+        color: #888;
+        margin: 0 12px;
+    }
+    .note {
+        font-size: 0.9em;
+        color: #666;
+        font-style: italic;
+        padding-left: 16px;
+        border-left: 2px solid #ddd;
+    }
+    .effect-card {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 16px;
+        transition: box-shadow 0.3s;
+    }
+    .effect-card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .effect-title {
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: #4caf50;
+        margin-bottom: 8px;
+    }
+    .ai-section {
+        background-color: #f0f7ff;
+        border-radius: 8px;
+        padding: 24px;
+        margin-bottom: 20px;
+    }
+    .ai-section h2 {
+        color: #1976d2;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+    .ai-content {
+        background-color: white;
+        padding: 16px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+    }
+    .emphasis-text {
+        background-color: #ffeb3b;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+    }
+    .workflow-list {
+        list-style-type: decimal;
+        padding-left: 24px;
+    }
+    .workflow-list li {
+        margin-bottom: 12px;
+        font-size: 1.1rem;
+    }
+    .example-code {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 16px;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        font-size: 0.9rem;
+        margin: 16px 0;
+    }
+    .summary-point {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .summary-bullet {
+        background-color: #4caf50;
+        color: white;
+        min-width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+        font-weight: 700;
+    }
+    .qr-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+    .qr-item {
+        text-align: center;
+        width: 220px;
+    }
+    .qr-image {
+        border: 1px solid #eee;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
+        width: 180px;
+        height: auto;
+    }
+    .qr-label {
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+    .qr-description {
+        font-size: 0.9rem;
+        color: #666;
+    }
+    .disclaimer {
+        font-size: 0.9rem;
+        color: #777;
+        font-style: italic;
+        margin-top: 40px;
+    }
+    @media print {
+        .slide-container {
+            page-break-after: always;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide-container flex flex-col items-center justify-center p-12">
+<div class="text-center max-w-4xl">
+<div class="qiita-badge font-medium text-lg">QiitaBash</div>
+<h1 class="title text-5xl mb-6">TDDで(自分の)開発がどう変わったか</h1>
+<div class="accent-bar"></div>
+<p class="subtitle text-2xl mt-4 mb-8 text-center">【Qiita Bash】Qiita Tech Festa お疲れ様会</p>
+<div class="owl-container flex justify-center">
+<img alt="Icon" class="w-40 h-auto" src="./assets/icon.png"/>
+</div>
+<div class="mt-12">
+<p class="speaker-name text-2xl font-medium">Ryosuke Tomita (sigma)</p>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+</div>
+
+<!-- Slide 2: 自己紹介 -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">自己紹介</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="grid grid-cols-1 gap-6 mb-8">
+<div class="profile-item">
+<span class="profile-label">名前:</span>
+<span>富田涼介 (sigma)</span>
+</div>
+<div class="profile-item">
+<span class="profile-label">職業:</span>
+<span>セキュリティエンジニア NRIセキュアテクノロジーズに所属</span>
+</div>
+<div class="profile-item">
+<span class="profile-label">個人的ニュース:</span>
+<span>聴くエンジニアtypeに出演。Podcast聴いてください!</span>
+</div>
+<div class="profile-item">
+<span class="profile-label">一言:</span>
+<span>そろそろ常連になってきた? 運営様、スポンサー様ありがとうございます。</span>
+</div>
+</div>
+<div class="photo-container flex justify-center gap-4 mt-8">
+<img alt="QiitaBash イベント写真1" class="w-1/3 h-auto object-cover rounded-lg" src="./assets/qiitabash20250414.jpg"/>
+<img alt="QiitaBash イベント写真2" class="w-1/3 h-auto object-cover rounded-lg" src="./assets/qiitabash20250528.jpg"/>
+<img alt="QiitaBash イベント写真3" class="w-1/3 h-auto object-cover rounded-lg" src="./assets/qiitabash20250702.jpg"/>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 3: 今日話したいこと -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">今日話したいこと</h1>
+</div>
+<div class="content-area mx-auto mt-16">
+<ul class="agenda-list">
+<li class="agenda-item">
+<span class="agenda-bullet"></span>
+<span>TDDとはなにか?</span>
+</li>
+<li class="agenda-item">
+<span class="agenda-bullet"></span>
+<span>TDD導入のきっかけ</span>
+</li>
+<li class="agenda-item">
+<span class="agenda-bullet"></span>
+<span>実際の導入時の壁</span>
+</li>
+<li class="agenda-item">
+<span class="agenda-bullet"></span>
+<span>AIとTDD</span>
+</li>
+</ul>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 4: TDDとは？（超簡単版） -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">TDDとは？（超簡単版）</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="mb-8">
+<h2 class="text-2xl font-bold mb-6 text-center">テスト駆動開発 = Test Driven Development</h2>
+<div class="mt-10 space-y-6">
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">1.</span>
+<span class="text-xl font-medium">テストを書く</span>
+<span class="step-arrow">→</span>
+<span class="text-lg">失敗を確認</span>
+</div>
+</div>
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">2.</span>
+<span class="text-xl font-medium">最小限の実装</span>
+<span class="step-arrow">→</span>
+<span class="text-lg">テストを通す</span>
+</div>
+</div>
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">3.</span>
+<span class="text-xl font-medium">リファクタリング</span>
+<span class="step-arrow">→</span>
+<span class="text-lg">設計改善</span>
+</div>
+</div>
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">4.</span>
+<span class="text-xl font-medium">繰り返し</span>
+<i class="fas fa-sync-alt ml-4 text-green-600"></i>
+</div>
+</div>
+</div>
+<div class="note mt-12">
+※ Kent Beckの著書「テスト駆動開発」はおすすめ
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 5: TDD導入のきっかけ -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">TDD導入のきっかけ　「おらこんな環境いやだ〜TDDするだ〜」</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="text-center mt-16">
+<h2 class="text-4xl font-bold mb-16">自動テストが欲しい</h2>
+<div class="space-y-12 text-left max-w-3xl mx-auto">
+<div class="flex items-center">
+<i class="fas fa-robot text-5xl text-green-600 mr-8"></i>
+<p class="text-2xl">手動テストから解放されたい</p>
+</div>
+<div class="flex items-center">
+<i class="fas fa-clock text-5xl text-green-600 mr-8"></i>
+<p class="text-2xl">デプロイしてから動作確認をするのは時間がかかる</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 6: 実際の導入時の壁 -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">実際の導入時の壁</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="mt-20 space-y-16">
+<div class="flex items-center">
+<div class="bg-red-500 text-white rounded-full w-20 h-20 flex items-center justify-center text-3xl font-bold mr-8">1</div>
+<p class="text-3xl">開発環境の整備</p>
+</div>
+<div class="flex items-center">
+<div class="bg-red-500 text-white rounded-full w-20 h-20 flex items-center justify-center text-3xl font-bold mr-8">2</div>
+<p class="text-3xl">どんなテストを書いたらいいかわからない</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 7: 開発環境の整備 -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">開発環境の整備</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="text-xl mb-8">テストを実行するために労力が必要だとTDDを始めるのが億劫になる</p>
+<p class="text-lg mb-6">現在の開発環境を段階的に整備した。</p>
+<div class="space-y-6">
+<div class="bg-gray-100 p-6 rounded-lg">
+<h3 class="text-xl font-bold text-green-600 mb-2">レベル1: デプロイの自動化(CI/CD)</h3>
+<p class="text-lg">• テスト実行環境を作るよりは手がつけやすい</p>
+</div>
+<div class="bg-gray-100 p-6 rounded-lg">
+<h3 class="text-xl font-bold text-green-600 mb-2">レベル2: ローカルの開発環境構築手順の整備</h3>
+<p class="text-lg">• Docker化する</p>
+<p class="text-lg">• READMEに動く手順を書く。情報の集約</p>
+</div>
+<div class="bg-gray-100 p-6 rounded-lg">
+<h3 class="text-xl font-bold text-green-600 mb-2">レベル3: テスト実行環境の整備</h3>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 8: どんなテストを書いたらいい? -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">どんなテストを書いたらいい?</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="text-xl mb-8">ある程度の基礎を勉強したら、手を動かして直感を磨くしかなさそうな気がしている。</p>
+<div class="space-y-6">
+<div class="flex items-start">
+<i class="fas fa-check-circle text-green-600 text-xl mr-4 mt-1"></i>
+<div>
+<p class="text-lg font-medium">古典派的アプローチ: 振る舞いをテストする。テストが壊れにくくなる</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-check-circle text-green-600 text-xl mr-4 mt-1"></i>
+<div>
+<p class="text-lg font-medium">粗結合なコードをつくる</p>
+<p class="text-md text-gray-600 ml-4">• DDD</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-check-circle text-green-600 text-xl mr-4 mt-1"></i>
+<div>
+<p class="text-lg font-medium">TDDですべてのテストケースを網羅しようとしない</p>
+<p class="text-md text-gray-600 ml-4">• リリース前テストは別で作ったほうが良さそう</p>
+</div>
+</div>
+</div>
+<div class="mt-12 p-6 bg-blue-50 rounded-lg">
+<p class="text-lg text-center">📚 単体テストの考え方/使い方(書籍)はおすすめ</p>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 9: TDD導入で得られた4つの効果 -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">TDD導入で得られた4つの効果 ✨</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="space-y-6">
+<div class="effect-card">
+<h3 class="effect-title">1. 集中力UP</h3>
+<p class="text-lg">TDDのフローに沿うことで今やるべきことに集中できる</p>
+</div>
+<div class="effect-card">
+<h3 class="effect-title">2. テストのある安心感</h3>
+<p class="text-lg">テストがあることで勇気を持って変更できる</p>
+</div>
+<div class="effect-card">
+<h3 class="effect-title">3. 設計意識の向上</h3>
+<p class="text-lg">テストしやすいコード = 良い設計を意識するように</p>
+<p class="text-lg">コードをいきなり書かなくなった。</p>
+</div>
+<div class="effect-card">
+<h3 class="effect-title">4. 開発環境をエンハンスするモチベーション</h3>
+<p class="text-lg">TDDを進める中で、開発環境をより良くしようとする意欲が湧いてくる</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 10: AIとTDD(AIと並走する文脈) -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">AIとTDD(AIと並走する文脈)</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="text-xl mb-4">例: GitHub Copilot</p>
+<div class="ai-section">
+<h2 class="text-2xl">TDDのテストを一つ書いて一つ通すというやり方はAIと並走しやすい🙆</h2>
+<div class="ai-content space-y-4 mt-6">
+<div class="flex items-start">
+<span class="text-green-600 mr-3">✓</span>
+<p class="text-lg">AIと一緒にテストコードを書く(文法とか曖昧でも書きやすい)</p>
+</div>
+<div class="flex items-start">
+<span class="text-green-600 mr-3">✓</span>
+<div>
+<p class="text-lg">AIと一緒にテストコードを通す</p>
+<p class="text-md text-gray-600 ml-4">• テストが実施できるまではAIにまかせてもいいかも</p>
+<p class="text-md text-gray-600 ml-4">• テストが通るように実装すれば最低限の品質は保証される</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="text-green-600 mr-3">✓</span>
+<p class="text-lg">リファクタリングのアイデアを試しやすい</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 11: AIとTDD(AIに全部委託する文脈) -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">AIとTDD(AIに全部委託する文脈)</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="text-xl mb-6">例: Claude Code + Kiro(AWS)</p>
+<div class="workflow-list mb-8">
+<ol>
+<li>要求定義書(requirements.md)</li>
+<li>設計書(design.md)</li>
+<li>タスクリスト(tasks.md)</li>
+</ol>
+</div>
+<div class="bg-blue-50 p-6 rounded-lg mb-6">
+<p class="text-lg">3で作成したタスクリストをベースに「t-wadaさんのTDDで実装して」とClaude Codeにお願いすると割といい感じで作ってくれる。</p>
+</div>
+<div class="mt-8 space-y-4">
+<p class="text-lg">単純に仕様書駆動開発するよりは、タスクをもとにテストを作るほうが良さそう。(少なくとも人間の負担は少ない)</p>
+<p class="text-lg text-gray-600 italic">これが最良の方法なのかはわからない</p>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 12: まとめ -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">まとめ</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="mt-20 space-y-12">
+<div class="summary-point">
+<div class="summary-bullet text-xl">1</div>
+<p class="text-2xl">TDDを導入したことでエンジニアとして視野が広がるきっかけになった。</p>
+</div>
+<div class="summary-point">
+<div class="summary-bullet text-xl">2</div>
+<p class="text-2xl">少なくともAIにはテストとうガードレールは必要だとは思う。TDDが最良とは思わないので、手を動かしながらいろいろ模索していきたい。</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+<!-- Slide 13: Thanks -->
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">Thanks</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="text-xl mb-8">今日話しきれなかった部分についてのQiita記事と本日の発表資料のリンクです。</p>
+<div class="qr-container">
+<div class="qr-item">
+<img alt="Qiita記事QRコード" class="qr-image mx-auto" src="./assets/qiita.png"/>
+<div class="qr-label">Qiita記事</div>
+<div class="qr-description">TDDに関する詳細記事</div>
+</div>
+<div class="qr-item">
+<img alt="今日の登壇資料QRコード" class="qr-image mx-auto" src="./assets/sd.png"/>
+<div class="qr-label">今日の登壇資料</div>
+<div class="qr-description">スライド資料のダウンロード</div>
+</div>
+<div class="qr-item">
+<img alt="プロフィールページQRコード" class="qr-image mx-auto" src="./assets/profile.png"/>
+<div class="qr-label">プロフィールページ</div>
+<div class="qr-description">お問い合わせはこちら</div>
+</div>
+</div>
+<div class="disclaimer text-center">
+<p>※発言はすべて個人の見解であり，所属組織を代表するものではありません</p>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>どんなテストを書いたらいい?</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .content-area {
+            max-width: 1100px;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .point-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 28px;
+        }
+        .point-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-size: 24px;
+            color: #4caf50;
+            top: -6px;
+        }
+        .emphasis {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        .note-text {
+            font-style: italic;
+            color: #555;
+            margin-top: 24px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">どんなテストを書いたらいい?</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="mb-6 text-lg">ある程度の基礎を勉強したら、手を動かして直感を磨くしかなさそうな気がしている。</p>
+<div class="mt-8">
+<div class="point-item">
+<p><span class="emphasis">古典派的アプローチ:</span> 振る舞いをテストする。テストが壊れにくくなる</p>
+</div>
+<div class="point-item">
+<p><span class="emphasis">粗結合なコードをつくる</span></p>
+<ul class="ml-6 mt-2">
+<li class="mb-1">- DDD</li>
+</ul>
+</div>
+<div class="point-item">
+<p><span class="emphasis">TDDですべてのテストケースを網羅しようとしない</span></p>
+<ul class="ml-6 mt-2">
+<li class="mb-1">- リリース前テストは別で作ったほうが良さそう</li>
+</ul>
+</div>
+</div>
+<p class="note-text mt-10">単体テストの考え方/使い方(書籍)はおすすめ</p>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+            Qiita Bash 2025/07/30
+        </div>
+</div>
+</body>
+</html>

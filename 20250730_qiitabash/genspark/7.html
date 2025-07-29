@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>開発環境の整備</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .content-area {
+            max-width: 1100px;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .level-card {
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .level-title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .level-icon {
+            background-color: #4caf50;
+            color: white;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">開発環境の整備</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="text-lg mb-6">テストを実行するために労力が必要だとTDDを始めるのが億劫になる</p>
+<p class="text-lg mb-10">現在の開発環境を段階的に整備した。</p>
+<div class="level-card">
+<div class="level-title text-xl">
+<div class="level-icon">1</div>
+<span>レベル1: デプロイの自動化(CI/CD)</span>
+</div>
+<p class="pl-11">テスト実行環境を作るよりは手がつけやすい</p>
+</div>
+<div class="level-card">
+<div class="level-title text-xl">
+<div class="level-icon">2</div>
+<span>レベル2: ローカルの開発環境構築手順の整備</span>
+</div>
+<ul class="pl-11 list-disc ml-6 space-y-2">
+<li>Docker化する</li>
+<li>READMEに動く手順を書く。情報の集約</li>
+</ul>
+</div>
+<div class="level-card">
+<div class="level-title text-xl">
+<div class="level-icon">3</div>
+<span>レベル3: テスト実行環境の整備</span>
+</div>
+<p class="pl-11">TDD実践のための基盤となる環境</p>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+        Qiita Bash 2025/07/30
+    </div>
+</div>
+</body>
+</html>
