@@ -64,10 +64,11 @@
     .profile-item {
         margin-bottom: 16px;
         display: flex;
+        font-size: 1.5em;
     }
     .profile-label {
         font-weight: 600;
-        min-width: 140px;
+        min-width: 210px;
     }
     .agenda-list {
         list-style-type: none;
@@ -264,8 +265,12 @@
 <span>聴くエンジニアtypeに出演。Podcast聴いてください!</span>
 </div>
 <div class="profile-item">
+<span class="profile-label">Qiita Tech Festa 2025:</span>
+<span>ユーザいいね/ユーザ投稿数でランキング入り、Advanced Organizations達成</span>
+</div>
+<div class="profile-item">
 <span class="profile-label">一言:</span>
-<span>そろそろ常連になってきた? 運営様、スポンサー様ありがとうございます。</span>
+<span>そろそろ常連になってきたかも? Qiita運営の皆様、スポンサー様ありがとうございます✨</span>
 </div>
 </div>
 <div class="photo-container flex justify-center gap-4 mt-8">
@@ -284,7 +289,11 @@
 <div class="slide-header mb-10">
 <h1 class="title text-4xl">今日話したいこと</h1>
 </div>
-<div class="content-area mx-auto mt-16">
+<div class="content-area mx-auto mt-16 grid grid-cols-2 gap-8 items-center">
+<div class="flex justify-center">
+<img alt="Kent Beck" class="w-full h-auto object-cover rounded-lg shadow-lg" src="./assets/kentbeck.jpg"/>
+</div>
+<div>
 <ul class="agenda-list">
 <li class="agenda-item">
 <span class="agenda-bullet"></span>
@@ -303,6 +312,7 @@
 <span>AIとTDD</span>
 </li>
 </ul>
+</div>
 </div>
 <div class="absolute bottom-0 left-0 right-0 text-center text-xs text-gray-500" style="border-top: 1px solid rgba(76, 175, 80, 0.3); padding: 8px; background-color: rgba(76, 175, 80, 0.05);">
     Qiita Bash 2025/07/30
@@ -578,7 +588,7 @@
 </div>
 <div class="summary-point">
 <div class="summary-bullet text-xl">2</div>
-<p class="text-2xl">少なくともAIにはテストとうガードレールは必要だとは思う。TDDが最良とは思わないので、手を動かしながらいろいろ模索していきたい。</p>
+<p class="text-2xl">少なくともAIへのガードレールとしてのテストは有用だと思う。TDDが最良かはわからないので、手を動かしながらいろいろ模索していきたい。</p>
 </div>
 </div>
 </div>
@@ -598,7 +608,7 @@
 <div class="qr-item">
 <img alt="Qiita記事QRコード" class="qr-image mx-auto" src="./assets/qiita.png"/>
 <div class="qr-label">Qiita記事</div>
-<div class="qr-description">TDDに関する詳細記事</div>
+<div class="qr-description">TDDに関する詳細記事WIP</div>
 </div>
 <div class="qr-item">
 <img alt="今日の登壇資料QRコード" class="qr-image mx-auto" src="./assets/sd.png"/>
