@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TDD導入で得られた4つの効果</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .content-area {
+            max-width: 1100px;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .benefit-card {
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .benefit-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4caf50;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .benefit-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #2c7a2e;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-8">
+<h1 class="title text-4xl">TDD導入で得られた4つの効果 ✨</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="grid grid-cols-2 gap-8 mt-4">
+<div class="benefit-card p-6">
+<div class="benefit-icon">
+<i class="fas fa-brain fa-xl"></i>
+</div>
+<h3 class="benefit-title">1. 集中力UP</h3>
+<p>TDDのフローに沿うことで今やるべきことに集中できる</p>
+</div>
+<div class="benefit-card p-6">
+<div class="benefit-icon">
+<i class="fas fa-shield-alt fa-xl"></i>
+</div>
+<h3 class="benefit-title">2. テストのある安心感</h3>
+<p>テストがあることで勇気を持って変更できる</p>
+</div>
+<div class="benefit-card p-6">
+<div class="benefit-icon">
+<i class="fas fa-drafting-compass fa-xl"></i>
+</div>
+<h3 class="benefit-title">3. 設計意識の向上</h3>
+<p>テストしやすいコード = 良い設計を意識するように<br/>コードをいきなり書かなくなった</p>
+</div>
+<div class="benefit-card p-6">
+<div class="benefit-icon">
+<i class="fas fa-rocket fa-xl"></i>
+</div>
+<h3 class="benefit-title">4. 開発環境をエンハンスするモチベーション</h3>
+<p>TDDを進める中で、開発環境をより良くしようとする意欲が湧いてくる</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+</body>
+</html>

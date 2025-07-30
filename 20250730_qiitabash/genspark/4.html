@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TDDとは？（超簡単版）</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .content-area {
+            max-width: 1100px;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .process-step {
+            border-left: 3px solid #4caf50;
+            padding-left: 16px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .process-step:before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #4caf50;
+            left: -9px;
+            top: 6px;
+        }
+        .step-number {
+            font-weight: 700;
+            color: #4caf50;
+            margin-right: 8px;
+        }
+        .step-arrow {
+            color: #888;
+            margin: 0 12px;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            padding-left: 16px;
+            border-left: 2px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">TDDとは？（超簡単版）</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="mb-8">
+<h2 class="text-2xl font-bold mb-6 text-center">テスト駆動開発 = Test Driven Development</h2>
+<div class="mt-10 space-y-6">
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">1.</span>
+<span class="text-xl font-medium">テストを書く</span>
+<span class="step-arrow">→</span>
+<span class="text-lg">失敗を確認</span>
+</div>
+</div>
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">2.</span>
+<span class="text-xl font-medium">最小限の実装</span>
+<span class="step-arrow">→</span>
+<span class="text-lg">テストを通す</span>
+</div>
+</div>
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">3.</span>
+<span class="text-xl font-medium">リファクタリング</span>
+<span class="step-arrow">→</span>
+<span class="text-lg">設計改善</span>
+</div>
+</div>
+<div class="process-step">
+<div class="flex items-center">
+<span class="step-number text-xl">4.</span>
+<span class="text-xl font-medium">繰り返し</span>
+<i class="fas fa-sync-alt ml-4 text-green-600"></i>
+</div>
+</div>
+</div>
+<div class="note mt-12">
+※ Kent Beckの著書「テスト駆動開発」も参考になります
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+    Qiita Bash 2025/07/30
+</div>
+</div>
+</body>
+</html>

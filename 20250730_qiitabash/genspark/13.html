@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thanks</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .qr-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .qr-item {
+            text-align: center;
+            width: 220px;
+        }
+        .qr-image {
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            width: 180px;
+            height: auto;
+        }
+        .qr-label {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .qr-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #777;
+            font-style: italic;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">Thanks</h1>
+</div>
+<div class="content-area mx-auto">
+<p class="text-xl mb-8">今日話しきれなかった部分についてのQiita記事と本日の発表資料のリンクです。</p>
+<div class="qr-container">
+<div class="qr-item">
+<img alt="Qiita記事QRコード" class="qr-image mx-auto" src="https://page.gensparksite.com/v1/base64_upload/5ff9a7d21003bb28cce84125fe032b24"/>
+<div class="qr-label">Qiita記事</div>
+<div class="qr-description">TDDに関する詳細記事</div>
+</div>
+<div class="qr-item">
+<img alt="今日の登壇資料QRコード" class="qr-image mx-auto" src="https://page.gensparksite.com/v1/base64_upload/13e9f625a4f9ac30e776936a2d683732"/>
+<div class="qr-label">今日の登壇資料</div>
+<div class="qr-description">スライド資料のダウンロード</div>
+</div>
+<div class="qr-item">
+<img alt="プロフィールページQRコード" class="qr-image mx-auto" src="https://page.gensparksite.com/v1/base64_upload/8a005d8184086ee777095528d7533b39"/>
+<div class="qr-label">プロフィールページ</div>
+<div class="qr-description">お問い合わせはこちら</div>
+</div>
+</div>
+<div class="disclaimer text-center">
+<p>※発言はすべて個人の見解であり，所属組織を代表するものではありません</p>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+            Qiita Bash 2025/07/30
+        </div>
+</div>
+</body>
+</html>

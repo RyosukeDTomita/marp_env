@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIとTDD (AIに全部委託する文脈)</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        .title {
+            font-weight: 700;
+            color: #222;
+        }
+        .content-area {
+            max-width: 1100px;
+        }
+        .slide-header {
+            border-left: 6px solid #4caf50;
+            padding-left: 16px;
+        }
+        .step-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 24px;
+        }
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #4caf50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .note-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4caf50;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 4px;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">AIとTDD (AIに全部委託する文脈)</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="mb-8">
+<div class="flex items-center mb-6">
+<i class="fas fa-robot text-2xl text-green-600 mr-3"></i>
+<h2 class="text-2xl font-semibold">例: Claude Code + Kiro(AWS)</h2>
+</div>
+<div class="ml-8 mb-8">
+<div class="step-item">
+<div class="step-number">1</div>
+<p class="text-xl">要求定義書 (requirements.md)</p>
+</div>
+<div class="step-item">
+<div class="step-number">2</div>
+<p class="text-xl">設計書 (design.md)</p>
+</div>
+<div class="step-item">
+<div class="step-number">3</div>
+<p class="text-xl">タスクリスト (tasks.md)</p>
+</div>
+</div>
+<div class="bg-gray-50 p-5 rounded-lg border border-gray-200 shadow-sm">
+<p class="mb-4"><span class="highlight">3で作成したタスクリスト</span>をベースに「t-wadaさんのTDDで実装して」とClaude Codeにお願いすると割といい感じで作ってくれる。</p>
+</div>
+<div class="note-box mt-6">
+<p class="mb-2">単純に仕様書駆動開発するよりは、<span class="font-medium">タスクをもとにテストを作るほう</span>が良さそう。</p>
+<p>(少なくとも人間の負担は少ない)</p>
+</div>
+<div class="mt-8 text-gray-600 italic text-center">
+これが最良の方法なのかはわからない
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+            Qiita Bash 2025/07/30
+        </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIとTDD (AIと並走する文脈)</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .title {
+        font-weight: 700;
+        color: #222;
+    }
+    .content-area {
+        max-width: 1100px;
+    }
+    .slide-header {
+        border-left: 6px solid #4caf50;
+        padding-left: 16px;
+    }
+    .feature-card {
+        border: 1px solid #eee;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .feature-icon {
+        color: #4caf50;
+        font-size: 2rem;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container p-12">
+<div class="slide-header mb-10">
+<h1 class="title text-4xl">AIとTDD (AIと並走する文脈)</h1>
+</div>
+<div class="content-area mx-auto">
+<div class="mb-8">
+<div class="text-xl font-semibold mb-4">例: GitHub Copilot</div>
+<div class="text-lg mb-4">TDDのテストを一つ書いて一つ通すというやり方はAIと並走しやすい🙆</div>
+<div class="grid grid-cols-3 gap-6 mt-8">
+<div class="feature-card p-6">
+<div class="flex justify-center mb-4">
+<i class="fas fa-pencil-alt feature-icon"></i>
+</div>
+<h3 class="text-lg font-semibold text-center mb-3">AIと一緒にテストコードを書く</h3>
+<p class="text-center">文法とか曖昧でも書きやすい</p>
+</div>
+<div class="feature-card p-6">
+<div class="flex justify-center mb-4">
+<i class="fas fa-check-circle feature-icon"></i>
+</div>
+<h3 class="text-lg font-semibold text-center mb-3">AIと一緒にテストコードを通す</h3>
+<p class="text-center">テストが実施できるまではAIにまかせてもいいかも</p>
+<p class="text-center text-sm mt-2">テストが通るように実装すれば最低限の品質は保証される</p>
+</div>
+<div class="feature-card p-6">
+<div class="flex justify-center mb-4">
+<i class="fas fa-code-branch feature-icon"></i>
+</div>
+<h3 class="text-lg font-semibold text-center mb-3">リファクタリングのアイデア</h3>
+<p class="text-center">リファクタリングの案をAIと試しやすい</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 text-sm text-gray-500">
+        Qiita Bash 2025/07/30
+    </div>
+</div>
+</body>
+</html>
