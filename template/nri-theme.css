@@ -326,7 +326,10 @@ section.cover h1 {
 section.cover hr {
   width: 58%;
   margin: 20px 0 28px 0;
-  border-top: 2px solid var(--nri-navy);
+  border: 0;
+  height: 2px;
+  background: var(--nri-navy);
+  box-shadow: none;
   position: relative;
   z-index: 2;
 }
