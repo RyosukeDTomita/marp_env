@@ -5,6 +5,7 @@
 ## INDEX
 
 - [ABOUT](#about)
+- [ENVIRONMENT](#environment)
 - [PREPARING](#preparing)
 - [HOW TO USE](#how-to-use)
 
@@ -14,6 +15,17 @@
 
 WSL2でMarpを使った時にブラウザが入っておらず，Exportがうまくいかなかったので毎度やらなくて良いようにDev Containersにした。
 今後Marpで作成する自分の発表資料等もここで管理する。
+
+---
+
+## ENVIRONMENT
+
+### ホストOS
+
+- Ubuntu 24.04 LTS
+
+> [!WARN]
+> macOSの場合はChromiumがうまく動かなかったので調査中
 
 ---
 
