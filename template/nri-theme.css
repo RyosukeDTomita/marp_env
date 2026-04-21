@@ -1,0 +1,455 @@
+@charset "UTF-8";
+
+/* ============================================================
+   NRI Report Theme for Marp
+   NRI（野村総合研究所）報告書スタイルを再現したMarpテーマ
+   ============================================================ */
+
+/* ---- カラー変数 ---- */
+:root {
+  --nri-navy:       #1a2e6e;   /* NRIネイビーブルー（全青色要素で統一） */
+  --nri-blue:       #1a2e6e;   /* ネイビーに統一 */
+  --nri-section-bg: #f0f2f5;   /* セクション区切り背景 */
+  --nri-text:       #333333;   /* 本文 */
+  --nri-crumb:      #555555;   /* ブレッドクラム */
+  --nri-footer:     #888888;   /* フッター */
+  --nri-dot-line:   #aaaaaa;   /* 目次ドット線 */
+}
+
+/* ============================================================
+   ベーススライド（コンテンツスライド）
+   ============================================================ */
+section {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN',
+               'Hiragino Sans', 'Meiryo', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--nri-text);
+  background-color: #ffffff;
+  /* header(36px) + 上余白16px = 52px; 下はfooter(30px) */
+  padding: 52px 60px 50px 60px;
+  width: 1280px;
+  height: 720px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: none;
+  /* Marpのデフォルトflex-centerを上寄せに上書き */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+
+/* ---- ヘッダー（ブレッドクラム） ---- */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 60px;
+  font-size: 12px;
+  color: #1a2e6e !important;
+  border-bottom: 1.5px solid #1a2e6e;
+  background-color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- フッター（Copyright + NRI logo）---- */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 90px 0 60px;   /* 右はページ番号分の余白 */
+  gap: 12px;
+  font-size: 10.5px;
+  color: #1a2e6e !important;   /* ネイビーブルー強制適用 */
+}
+
+/* NRIロゴ（フッター右端） */
+footer::after {
+  content: '';
+  display: inline-block;
+  flex-shrink: 0;
+  width: 52px;
+  height: 18px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/27/Nomura_Research_Institute_Logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ---- ページ番号 ---- */
+section::after {
+  position: absolute;
+  bottom: 5px;
+  right: 24px;
+  font-size: 13px;
+  color: #1a2e6e !important;   /* ネイビーブルー強制適用 */
+  font-weight: bold;
+  content: attr(data-marpit-pagination);
+}
+
+/* ---- H1（メインタイトル／左ネイビーボーダー付き） ---- */
+section h1 {
+  font-size: 24px;
+  color: #1a2e6e !important;
+  font-weight: bold;
+  border-left: 5px solid #1a2e6e;
+  padding-left: 14px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  line-height: 1.35;
+}
+
+/* ---- H2（詳細度を上げてMarpデフォルトを上書き） ---- */
+section h2,
+section :is(h2, marp-h2) {
+  font-size: 17px;
+  color: #1a2e6e !important;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 4px;
+}
+
+/* ---- H3 ---- */
+section h3 {
+  font-size: 15px;
+  color: #1a2e6e !important;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+/* ---- 箇条書き（■ブレット） ---- */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0;
+}
+
+ul > li {
+  padding-left: 1.6em;
+  position: relative;
+  margin-bottom: 7px;
+  line-height: 1.6;
+}
+
+ul > li::before {
+  content: "■";
+  color: var(--nri-navy);
+  position: absolute;
+  left: 0;
+  font-size: 0.8em;
+  top: 0.15em;
+}
+
+/* 第2階層（・ブレット） */
+ul ul > li::before {
+  content: "・";
+  color: var(--nri-text);
+  font-size: 1em;
+  top: 0;
+}
+
+/* ---- 番号付きリスト ---- */
+ol {
+  padding-left: 2em;
+  margin: 8px 0;
+}
+
+ol > li {
+  margin-bottom: 7px;
+  line-height: 1.6;
+}
+
+/* ---- テーブル ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+th {
+  background-color: var(--nri-navy);
+  color: #ffffff;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+td {
+  border: 1px solid #cccccc;
+  padding: 7px 12px;
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background-color: #f8f8f8;
+}
+
+/* ---- 水平線 ---- */
+hr {
+  border: none;
+  border-top: 1.5px solid var(--nri-navy);
+  margin: 14px 0;
+}
+
+/* ---- blockquote（注記・補足） ---- */
+blockquote {
+  border-left: 4px solid var(--nri-blue);
+  padding: 8px 14px;
+  margin: 10px 0;
+  color: #555;
+  font-size: 13px;
+  background-color: #f5f7fc;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* ---- コード ---- */
+code {
+  background-color: #f0f0f0;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+pre {
+  background-color: #f4f4f4;
+  border-left: 4px solid var(--nri-navy);
+  padding: 12px 16px;
+  border-radius: 0 4px 4px 0;
+  overflow-x: auto;
+}
+
+/* ============================================================
+   表紙スライド (class: cover)
+   ============================================================ */
+section.cover {
+  padding: 50px 60px;
+  background: #ffffff;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  overflow: hidden;
+}
+
+/* 右側デコレーションパネル */
+section.cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 27%;
+  height: 100%;
+  background: linear-gradient(
+    160deg,
+    #f5c842 0%,
+    #e8a020 15%,
+    #1a6099 35%,
+    #1a2e6e 60%,
+    #0d1a3d 100%
+  );
+  /* ネットワーク/都市をイメージした幾何学パターン */
+  background-image:
+    linear-gradient(160deg, #f5c842 0%, #e8a020 15%, #1a6099 35%, #1a2e6e 60%, #0d1a3d 100%);
+  box-shadow: none;
+  z-index: 0;
+}
+
+/* 右パネルの白い幾何学ライン演出 */
+section.cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 27%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+    radial-gradient(circle at 40% 70%, rgba(255,255,255,0.10) 0%, transparent 35%),
+    linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.05) 50%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, rgba(255,255,255,0.05) 50%, transparent 55%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 表紙ではheader/footer/ページ番号を非表示 */
+section.cover header,
+section.cover footer {
+  display: none;
+}
+
+/* 表紙ラベル「報告書」 */
+section.cover .label {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--nri-navy);
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 表紙タイトル */
+section.cover h1 {
+  border-left: none;
+  padding-left: 0;
+  font-size: 28px;
+  color: var(--nri-navy);
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 1.45;
+  width: 72%;
+  position: relative;
+  z-index: 2;
+}
+
+/* 表紙区切り線 */
+section.cover hr {
+  width: 58%;
+  margin: 20px 0 28px 0;
+  border-top: 2px solid var(--nri-navy);
+  position: relative;
+  z-index: 2;
+}
+
+/* 表紙組織情報 */
+section.cover p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--nri-text);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+section.cover p strong {
+  font-size: 18px;
+  color: var(--nri-navy);
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   目次スライド (class: toc)
+   ============================================================ */
+section.toc h1 {
+  font-size: 26px;
+  border-left: 6px solid var(--nri-navy);
+  padding-left: 14px;
+}
+
+section.toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+  counter-reset: toc-item;
+}
+
+section.toc ol > li {
+  counter-increment: toc-item;
+  position: relative;
+  padding: 8px 60px 8px 2.5em;
+  border-bottom: 1px dotted var(--nri-dot-line);
+  font-size: 15px;
+  color: var(--nri-navy);
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+section.toc ol > li::before {
+  content: counter(toc-item) ".";
+  position: absolute;
+  left: 0;
+  color: var(--nri-navy);
+  font-weight: bold;
+}
+
+section.toc ol > li .page-num {
+  position: absolute;
+  right: 0;
+  font-size: 14px;
+  color: var(--nri-navy);
+}
+
+/* 目次サブ項目（ul内に記述） */
+section.toc ul {
+  margin: 4px 0 0 1em;
+}
+
+section.toc ul > li {
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--nri-text);
+  padding-left: 1.4em;
+  margin-bottom: 3px;
+}
+
+section.toc ul > li::before {
+  content: "●";
+  font-size: 0.65em;
+  color: var(--nri-navy);
+  top: 0.3em;
+}
+
+/* ============================================================
+   セクション区切りスライド (class: section-divider)
+   ============================================================ */
+section.section-divider {
+  background-color: var(--nri-section-bg);
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 100px 80px;
+}
+
+section.section-divider header {
+  display: none;
+}
+
+section.section-divider footer {
+  bottom: 0;
+}
+
+/* セクション区切りのタイトル */
+section.section-divider h1 {
+  border-left: none;
+  padding-left: 0;
+  font-size: 30px;
+  color: var(--nri-navy);
+  text-align: center;
+  border-bottom: 2px solid var(--nri-navy);
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  width: 68%;
+  line-height: 1.5;
+}
+
+/* セクション区切りのサブタイトル */
+section.section-divider h2 {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #1a2e6e !important;   /* ネイビーに統一 */
+  border-bottom: none;
+  padding-bottom: 0;
+}
